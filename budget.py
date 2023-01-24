@@ -22,8 +22,12 @@ class Budget:
 
 class Expenses:
     def __init__(self, expense_name, expense_amount):
+        self._list = []
         self._expense_name = expense_name
         self._expense_amount = expense_amount
+
+    # def __str__(self):
+    #     return self._expense_name + "###" + self._expense_amount
 
     @property
     def name(self):
@@ -33,6 +37,10 @@ class Expenses:
     def amount(self):
         return self._expense_amount
 
+    @property
+    def list(self):
+        return self._list
+
     @name.setter
     def name(self, expense_name):
         self._expense_name = expense_name
@@ -41,7 +49,14 @@ class Expenses:
     def amount(self, expense_amount):
         self._expense_amount = expense_amount
 
+    @property
+    def expense(self):
+        return self._list
 
-test = Expenses("", 0)
-test.name = "Alex"
-print(test.name)
+    def add_expense(self, expense_item):
+        self._list.append(expense_item)
+
+
+# test = Expenses("", 0)
+# test.name = "Alex"
+# print(test.name)

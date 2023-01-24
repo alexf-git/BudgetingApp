@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing</title>
+</head>
+<body>
+    <div class="form">
+        <h3>Create a Budget</h3>
+        <form method="POST">
+            <label>Budget Name:</label><br>
+            <input type="text" id="budget_name" name="budget_name"><br>
+            <label>Budget Amount:</label><br>
+            <input type="text" id="budget_amount" name="budget_amount"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div>
+        Budget - {{ budget_name }} - ${{ budget_amount }}
+    </div>
+    <div class="form">
+        <h3>Add expenses</h3>
+        <form method="POST" action="{{ url_for('expenses') }}">
+            <label>Expense Name:</label><br>
+            <input type="text" id="expense_name" name="expense_name"><br>
+            <label>Expense Amount:</label><br>
+            <input type="text" id="expense_amount" name="expense_amount"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div>
+        <h3>Expense List</h3>
+        {% for item in expense_list %}
+            <p>{{ item._expense_name }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
