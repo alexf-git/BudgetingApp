@@ -13,6 +13,7 @@ def main():
     b = budget.Budget(name, amount)
 
     return render_template('testing.html',
+                           budget=b,
                            budget_name=b.name,
                            budget_amount=b.amount
                            )
