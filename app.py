@@ -1,21 +1,25 @@
 from flask import Flask, render_template, request
-import budget
+from budget import Budget, Expense
 
 app = Flask(__name__)
 e_list = []
+budget_list = []
 
 
+@app.route('/main')
 @app.route('/', methods=['GET', 'POST'])
 def main():
-    name = request.form.get('budget_name')
-    amount = request.form.get('budget_amount')
-
-    b = budget.Budget(name, amount)
-
+    if request.method == "POST":
+        budget_name = request.form.get('budget_name')
+        budget_amount = request.form.get('budget_amount')
+        b = Budget(budget_name, budget_amount)
+        return render_template('testing.html',
+                               budget_name=b.name,
+                               budget_amount=b.amount
+                               )
     return render_template('testing.html',
-                           budget=b,
-                           budget_name=b.name,
-                           budget_amount=b.amount
+                           budget_name="",
+                           budget_amount=0
                            )
 
 
